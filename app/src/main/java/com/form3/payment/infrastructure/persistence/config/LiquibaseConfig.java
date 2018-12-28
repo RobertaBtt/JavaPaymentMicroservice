@@ -1,4 +1,4 @@
-package main.java.com.form3.payment.infrastructure.persistence.config;
+package com.form3.payment.infrastructure.persistence.config;
 
 import liquibase.Contexts;
 import liquibase.Liquibase;
@@ -40,23 +40,23 @@ public class LiquibaseConfig {
     }
 
     private void initProperties(Environment env) {
-        enabled = env.getProperty("touche.liquibase.enabled", Boolean.class, Boolean.FALSE);
-        log.debug("touche.liquibase.enabled: {}", enabled);
+        enabled = env.getProperty("form3.liquibase.enabled", Boolean.class, Boolean.FALSE);
+        log.debug("form3.liquibase.enabled: {}", enabled);
 
-        liquibaseChangeLog = env.getProperty("touche.liquibase.change-log");
-        log.debug("touche.liquibase.change-log: {} ", liquibaseChangeLog);
+        liquibaseChangeLog = env.getProperty("form3.liquibase.change-log");
+        log.debug("form3.liquibase.change-log: {} ", liquibaseChangeLog);
 
-        dropFirst = env.getProperty("touche.liquibase.drop-first", Boolean.class, Boolean.FALSE);
-        log.debug("touche.liquibase.drop-first: {}", dropFirst);
+        dropFirst = env.getProperty("form3.liquibase.drop-first", Boolean.class, Boolean.FALSE);
+        log.debug("form3.liquibase.drop-first: {}", dropFirst);
 
-        exitAtEnd = env.getProperty("touche.liquibase.exit-at-end", Boolean.class, Boolean.FALSE);
-        log.debug("touche.liquibase.exit-at-end: {}", exitAtEnd);
+        exitAtEnd = env.getProperty("form3.liquibase.exit-at-end", Boolean.class, Boolean.FALSE);
+        log.debug("form3.liquibase.exit-at-end: {}", exitAtEnd);
     }
 
     @Bean
-    public Liquibase toucheLiquibase() {
+    public Liquibase form3Liquibase() {
 
-        log.debug("Starting touche liquibase");
+        log.debug("Starting form3 liquibase");
 
         Liquibase liquibase = null;
         try {
