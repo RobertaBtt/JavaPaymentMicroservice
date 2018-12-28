@@ -1,135 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.form3</groupId>
     <artifactId>ms_payment</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
 
     <modules>
+        <module>app</module>
     </modules>
 
+
     <properties>
-        <!-- Default encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Java versions -->
-        <java.source.version>1.8</java.source.version>
-        <java.target.version>1.8</java.target.version>
+        <java.version>1.8</java.version>
 
-        <!-- Maven plugins  -->
+        <!--Maven-->
+
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
-        <fabric8.maven.plugin.version>3.2.28</fabric8.maven.plugin.version>
-        <liquibase-maven-plugin.version>3.5.3</liquibase-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
         <gmavenplus-plugin.version>1.5</gmavenplus-plugin.version>
+        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
 
-        <!-- Spring -->
+        <spring-boot-maven-plugin.version>1.3.5.RELEASE</spring-boot-maven-plugin.version>
         <spring.platform.version>Brussels-SR5</spring.platform.version>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-        <spring-cloud-starter-kubernetes.version>0.1.6</spring-cloud-starter-kubernetes.version>
+        <spring-boot-starter-test.version>1.5.2.RELEASE</spring-boot-starter-test.version>
+        <spring-boot-starter.version>1.5.2.RELEASE</spring-boot-starter.version>
+        <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
 
-        <lombok.version>1.16.12</lombok.version>
-        <jackson.version>2.8.11</jackson.version>
+
+        <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
+
+        <katharsis.version>3.0.1</katharsis.version>
+        <okhttp.version>3.6.0</okhttp.version>
+
+        <jackson.version>2.9.1</jackson.version>
         <jersey-jackson.version>2.25</jersey-jackson.version>
-        <joda-money.version>0.10.0</joda-money.version>
-        <hibernate.version>5.1.0.Final</hibernate.version>
+        <swagger.version>1.5.10</swagger.version>
+
+        <rxjava.version>2.1.12</rxjava.version>
+        <rxjava2-interop.version>0.12.6</rxjava2-interop.version>
+        <javax.inject.version>1</javax.inject.version>
+        <jjwt.version>0.7.0</jjwt.version>
+
+        <javaslang.version>2.0.5</javaslang.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <lombok.version>1.16.12</lombok.version>
+        <guava.version>21.0</guava.version>
+        <spock.core.version>1.1-groovy-2.4</spock.core.version>
+
+        <!--Test-->
+        <assertj.version>3.6.2</assertj.version>
+        <json.unit.version>1.17.0</json.unit.version>
+        <rest-assured.version>3.0.2</rest-assured.version>
+        <dbunit.version>2.5.3</dbunit.version>
+
+        <!--Data management -->
+        <h2.version>1.4.196</h2.version>
         <postgresql.version>42.2.1</postgresql.version>
         <datasource-proxy.version>1.4.4</datasource-proxy.version>
         <hikaricp.version>2.7.6</hikaricp.version>
-        <httpclient.version>4.4</httpclient.version>
 
-        <rxjava.version>2.0.3</rxjava.version>
-        <rxjava2-interop.version>0.1.1</rxjava2-interop.version>
-        <javax.inject.version>1</javax.inject.version>
+        <ms_commons.version>1.2.0-SNAPSHOT</ms_commons.version>
 
-        <springfox.version>2.6.1</springfox.version>
-        <swagger.version>1.5.10</swagger.version>
-        <validation-api.version>2.0.0.Final</validation-api.version>
-
-        <!-- Testing -->
-        <spock.core.version>1.1-groovy-2.4</spock.core.version>
-        <dbunit.version>2.5.0</dbunit.version>
-        <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
-        <assertj.version>3.8.0</assertj.version>
-        <mockito.version>2.7.0</mockito.version>
-        <h2.version>1.4.196</h2.version>
-        <liquibase-core.version>3.5.3</liquibase-core.version>
-        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
-        <hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.6</javax.el.version>
-
+        <resourceDir>src/main/config</resourceDir>
     </properties>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>pl.project13.maven</groupId>
-                    <artifactId>git-commit-id-plugin</artifactId>
-                    <version>${git-commit-id-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>get-the-git-infos</id>
-                            <goals>
-                                <goal>revision</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <!-- this is false by default, forces the plugin to generate the git.properties file -->
-                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
-
-                        <!-- The path for the properties file to be generated. See Super Pom for default variable reference https://maven.apache.org/guides/introduction/introduction-to-the-pom.html -->
-                        <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.gmavenplus</groupId>
-                    <artifactId>gmavenplus-plugin</artifactId>
-                    <version>${gmavenplus-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>addTestSources</goal>
-                                <goal>testCompile</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
         <plugins>
+
+            <!-- spring-boot-maven-plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.source.version}</source>
-                    <target>${java.target.version}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
+                <version>${maven-compiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                
-          
+                <dependencies>
+                    <dependency>
+                        <groupId>com.gotouche</groupId>
+                        <artifactId>ms_commons-test</artifactId>
+                        <version>${ms_commons.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IT.java</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                    <excludedGroups>com.gotouche.common.test.IntegrationTest</excludedGroups>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
-                
+                <dependencies>
+                    <dependency>
+                        <groupId>com.gotouche</groupId>
+                        <artifactId>ms_commons-test</artifactId>
+                        <version>${ms_commons.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                        <include>**/*IntegrationTest.java</include>
+                    </includes>
+                    <groups>com.gotouche.common.test.IntegrationTest</groups>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -138,6 +138,16 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>${git-commit-id-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
@@ -152,18 +162,29 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-            </plugin>
         </plugins>
     </build>
 
 
     <dependencyManagement>
+
         <dependencies>
+
+
             <!-- Spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-starter-test.version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
@@ -171,6 +192,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- end Spring boot -->
 
             <!-- spring cloud -->
             <dependency>
@@ -180,22 +202,46 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>io.fabric8</groupId>
-                <artifactId>spring-cloud-starter-kubernetes</artifactId>
-                <version>${spring-cloud-starter-kubernetes.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.fabric8</groupId>
-                <artifactId>spring-cloud-starter-kubernetes-netflix</artifactId>
-                <version>${spring-cloud-starter-kubernetes.version}</version>
-            </dependency>
             <!-- end spring cloud -->
 
+            <!-- katharsis -->
             <dependency>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-core</artifactId>
-                <version>${liquibase-core.version}</version>
+                <groupId>io.katharsis</groupId>
+                <artifactId>katharsis-core</artifactId>
+                <version>${katharsis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.katharsis</groupId>
+                <artifactId>katharsis-spring</artifactId>
+                <version>${katharsis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.katharsis</groupId>
+                <artifactId>katharsis-client</artifactId>
+                <version>${katharsis.version}</version>
+            </dependency>
+            <!-- okhttp -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.javaslang</groupId>
+                <artifactId>javaslang</artifactId>
+                <version>${javaslang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
             </dependency>
 
             <dependency>
@@ -205,25 +251,8 @@
             </dependency>
 
             <dependency>
-                <groupId>io.reactivex.rxjava2</groupId>
-                <artifactId>rxjava</artifactId>
-                <version>${rxjava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.akarnokd</groupId>
-                <artifactId>rxjava2-interop</artifactId>
-                <version>${rxjava2-interop.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
+                <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
 
@@ -235,16 +264,44 @@
 
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
+                <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
 
-
-            <!--jackson -->
             <dependency>
-                <groupId>org.glassfish.jersey.media</groupId>
-                <artifactId>jersey-media-json-jackson</artifactId>
-                <version>${jersey-jackson.version}</version>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.reactivex.rxjava2</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.akarnokd</groupId>
+                <artifactId>rxjava2-interop</artifactId>
+                <version>${rxjava2-interop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
             </dependency>
 
             <dependency>
@@ -259,62 +316,28 @@
                 <version>${hikaricp.version}</version>
             </dependency>
 
+            <!--jackson -->
             <dependency>
-                <groupId>org.joda</groupId>
-                <artifactId>joda-money</artifactId>
-                <version>${joda-money.version}</version>
-            </dependency>
-
-
-
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>${jersey-jackson.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-java8</artifactId>
-                <version>${hibernate.version}</version>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jsonSchema</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
+            <!-- end jackson -->
 
-            <dependency>
-                <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
-                <version>${javax.inject.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${validation-api.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>${javax.ws.rs-api.version}</version>
-            </dependency>
 
             <!-- swagger -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-jersey2-jaxrs</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-bean-validators</artifactId>
-                <version>${springfox.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>io.swagger</groupId>
@@ -323,21 +346,29 @@
             </dependency>
             <!-- end swagger -->
 
-           
-
             <!-- test dependencies -->
+
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-core</artifactId>
                 <version>${spock.core.version}</version>
                 <scope>test</scope>
             </dependency>
+
             <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
+                <groupId>net.javacrumbs.json-unit</groupId>
+                <artifactId>json-unit</artifactId>
+                <version>${json.unit.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>net.javacrumbs.json-unit</groupId>
+                <artifactId>json-unit-fluent</artifactId>
+                <version>${json.unit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.assertj</groupId>
@@ -347,19 +378,24 @@
             </dependency>
 
             <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>${rest-assured.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>com.github.springtestdbunit</groupId>
                 <artifactId>spring-test-dbunit</artifactId>
                 <version>${spring-test-dbunit.version}</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.dbunit</groupId>
                 <artifactId>dbunit</artifactId>
                 <version>${dbunit.version}</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
@@ -367,36 +403,75 @@
                 <scope>test</scope>
             </dependency>
 
+            <!-- end test dependencies-->
+
+
             <dependency>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
-                <scope>test</scope>
+                <groupId>com.form3</groupId>
+                <artifactId>ms_payment-app</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator-annotation-processor</artifactId>
-                <version>${hibernate-validator.version}</version>
-                <scope>test</scope>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-exceptions</artifactId>
+                <version>${ms_commons.version}</version>
             </dependency>
             <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
-                <version>${javax.el-api.version}</version>
-                <scope>test</scope>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-rest</artifactId>
+                <version>${ms_commons.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.glassfish.web</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>${javax.el.version}</version>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-client</artifactId>
+                <version>${ms_commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-logging</artifactId>
+                <version>${ms_commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-db</artifactId>
+                <version>${ms_commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-cache</artifactId>
+                <version>${ms_commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-async-kafka-client</artifactId>
+                <version>${ms_commons.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.gotouche</groupId>
+                <artifactId>ms_commons-test</artifactId>
+                <version>${ms_commons.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- end test dependencies -->
+
+            <!-- end Touche artifacts -->
 
         </dependencies>
+
     </dependencyManagement>
 
-   
+
+    <dependencies>
+        <!-- global dependencies, for plugins for example -->
+        <dependency>
+            <groupId>com.gotouche</groupId>
+            <artifactId>ms_commons-test</artifactId>
+            <version>${ms_commons.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- end global dependencies, for plugins for example -->
+    </dependencies>
 
     <reporting>
         <plugins>
