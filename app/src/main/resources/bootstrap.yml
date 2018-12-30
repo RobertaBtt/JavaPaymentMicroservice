@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: payment
+  cloud:
+    kubernetes:
+      config:
+        namespace: ${kubernetes.namespace}
+
+
+feign:
+    hystrix:
+        enabled: true

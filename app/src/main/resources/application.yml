@@ -1,0 +1,26 @@
+
+logging:
+  pattern:
+    console: "%d %-5level [${spring.application.name:-}, %X{X-B3-TraceId:-}, %X{X-B3-SpanId:-}] [%thread] %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    org.netflix: INFO
+    com.form3: DEBUG
+
+server:
+    servlet-path: /system
+    port: 8080
+
+management:
+    info:
+      git:
+        mode: full
+    security:
+        enabled: false
+
+---
+
+spring:
+  profiles: local
+
+server.port: 8084
