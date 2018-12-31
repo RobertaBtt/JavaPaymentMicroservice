@@ -7,7 +7,6 @@
 package com.form3.payment.application.payment;
 
 
-
-public class PaymentMapper  {
+public class PaymentMapper {
 
 }
