@@ -1,8 +1,5 @@
 package com.form3.payment.domain.ResourceHandlers;
 
-import com.github.jasminb.jsonapi.ResourceIdHandler;
-
-
 public class StringOrganisationIdHandler implements ResourceOrganisationIdHandler {
     public StringOrganisationIdHandler() {
     }

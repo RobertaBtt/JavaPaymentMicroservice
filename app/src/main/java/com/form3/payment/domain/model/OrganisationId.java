@@ -1,9 +1,5 @@
 package com.form3.payment.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.jasminb.jsonapi.annotations.Id;
-import com.github.jasminb.jsonapi.annotations.Relationship;
-import com.github.jasminb.jsonapi.annotations.Type;
 import lombok.Getter;
 import lombok.Setter;
 
