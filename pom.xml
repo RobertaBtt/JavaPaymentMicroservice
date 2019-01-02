@@ -196,6 +196,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.platform.version}</version>
+            </dependency>
             <!-- end Spring boot -->
 
             <!-- spring cloud -->
