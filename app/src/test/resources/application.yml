@@ -1,5 +1,0 @@
-form3:
-  liquibase:
-    enabled: true
-    drop-first: true
-    change-log: liquibase/db.pastello.master.xml

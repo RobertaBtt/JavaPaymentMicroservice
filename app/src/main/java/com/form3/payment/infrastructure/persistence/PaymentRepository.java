@@ -4,6 +4,7 @@ import com.form3.payment.domain.model.Payment;
 import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryBase;
 import io.katharsis.resource.list.ResourceList;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;

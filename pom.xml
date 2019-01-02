@@ -417,8 +417,6 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- end Touche artifacts -->
-
         </dependencies>
 
     </dependencyManagement>

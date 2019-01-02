@@ -24,11 +24,8 @@ class JSONPaymentImporterTest {
         importer.loadDataFile(payments, folder);
 
         assert payments.size() == 2
-//        assert payments.first().type == "Payment"
-//        assert payments.first().version == "0";
         assert payments.first().amount == "100.21"
         assert payments.first().beneficiary_party.accountName == "W Owens"
- //       assert payments.last().organisation_id.organisation_id == "743d5b63-8e6f-432e-a8fa-c5d8d2ee5fcb";
     }
 
 

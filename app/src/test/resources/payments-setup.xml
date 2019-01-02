@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <!--insert payment for test purpose -->
+    <payment
+          id="00000000-0000-0000-0000-000000000001"
+          type="payment"
+          version="0"
+          organisation_id="00000000-0000-0000-0000-000000000001"
+    />
+
+</dataset>
