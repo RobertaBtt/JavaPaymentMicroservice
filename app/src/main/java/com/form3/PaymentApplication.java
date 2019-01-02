@@ -7,24 +7,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
-//
-//@SpringBootApplication
-//@EnableAutoConfiguration(exclude = {LiquibaseAutoConfiguration.class})
-//public class PaymentApplication {
-//
-//    public static void main(String[] args) {
-//
-//        try {
-//            SpringApplication.run(PaymentApplication.class, args);
-//        } catch (BeanCreationException ex) {
-//            ex.printStackTrace();
-//            System.exit(1);
-//        }
-//    }
-//}
-//
-
-
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class PaymentApplication {
     public static void main(String[] args) {

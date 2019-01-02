@@ -7,6 +7,14 @@ logging:
     org.netflix: INFO
     com.form3: DEBUG
 
+
+# Hibernate
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQL9Dialect
+  show_sql: true
+  hbm2ddl.auto: none
+  packagesToScan: com.form3.payment.domain.model
+
 server:
     servlet-path: /system
     port: 8080
@@ -18,7 +26,22 @@ management:
     security:
         enabled: false
 
+
+form3:
+  liquibase:
+    change-log: liquibase/db.changelog-master.xml
+    enabled: false
+    drop-first: false
+    exit-at-end: false
+
+
+spring:
+  liquibase:
+    change-log: liquibase/db.changelog-master.xml
+    changeLog: liquibase/db.changelog-master.xml
+
 ---
+
 
 spring:
   profiles: local
