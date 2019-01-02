@@ -51,6 +51,9 @@ public class LiquibaseConfig {
 
         exitAtEnd = env.getProperty("form3.liquibase.exit-at-end", Boolean.class, Boolean.FALSE);
         log.debug("form3.liquibase.exit-at-end: {}", exitAtEnd);
+
+        log.debug("db.url: {}", env.getProperty("db.url"));
+
     }
 
     @Bean

@@ -68,7 +68,7 @@
         <dbunit.version>2.5.3</dbunit.version>
 
         <!--Data management -->
-        <h2.version>1.4.196</h2.version>
+        <h2.version>1.4.197</h2.version>
         <postgresql.version>42.2.1</postgresql.version>
         <datasource-proxy.version>1.4.4</datasource-proxy.version>
         <hikaricp.version>2.7.6</hikaricp.version>
@@ -77,6 +77,23 @@
 
         <resourceDir>src/main/config</resourceDir>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
 
     <build>
         <plugins>
@@ -101,39 +118,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.gotouche</groupId>
-                        <artifactId>ms_commons-test</artifactId>
-                        <version>${ms_commons.version}</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IT.java</exclude>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                    <excludedGroups>com.gotouche.common.test.IntegrationTest</excludedGroups>
-                </configuration>
+
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.gotouche</groupId>
-                        <artifactId>ms_commons-test</artifactId>
-                        <version>${ms_commons.version}</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <includes>
-                        <include>**/*IT.java</include>
-                        <include>**/*IntegrationTest.java</include>
-                    </includes>
-                    <groups>com.gotouche.common.test.IntegrationTest</groups>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -197,11 +188,8 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-                <version>${spring.platform.version}</version>
-            </dependency>
+
+
             <!-- end Spring boot -->
 
             <!-- spring cloud -->
@@ -333,6 +321,13 @@
                 <version>${hikaricp.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+
+
             <!--jackson -->
             <dependency>
                 <groupId>org.glassfish.jersey.media</groupId>
@@ -413,63 +408,13 @@
                 <version>${dbunit.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-                <scope>test</scope>
-            </dependency>
 
-            <!-- end test dependencies-->
 
 
             <dependency>
                 <groupId>com.form3</groupId>
                 <artifactId>ms_payment-app</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-exceptions</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-rest</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-client</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-logging</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-db</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-cache</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-async-kafka-client</artifactId>
-                <version>${ms_commons.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.gotouche</groupId>
-                <artifactId>ms_commons-test</artifactId>
-                <version>${ms_commons.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <!-- end Touche artifacts -->
@@ -480,14 +425,8 @@
 
 
     <dependencies>
-        <!-- global dependencies, for plugins for example -->
-        <dependency>
-            <groupId>com.gotouche</groupId>
-            <artifactId>ms_commons-test</artifactId>
-            <version>${ms_commons.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- end global dependencies, for plugins for example -->
+        <!-- global dependencies -->
+
     </dependencies>
 
     <reporting>

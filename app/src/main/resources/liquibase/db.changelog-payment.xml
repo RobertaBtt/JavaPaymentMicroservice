@@ -8,7 +8,7 @@
     <changeSet id="1" author="form3">
 
         <createTable tableName="payment">
-            <column name="type" type="varchar(255)"/>
+            <column name="type" type="varchar(25)"/>
             <column name="id" type="varchar(255)"/>
             <column name="version" type="varchar(255)"/>
             <column name="organisation_id" type="varchar(255)"/>
