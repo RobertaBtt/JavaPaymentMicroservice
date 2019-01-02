@@ -10,7 +10,7 @@ import javax.persistence.metamodel.EntityType;
 import java.io.Serializable;
 
 @NoRepositoryBean
-public class BaseRepositoryImpl <T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
+public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
 
     private final EntityInformation entityInformation;
     private final EntityManager entityManager;
