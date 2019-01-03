@@ -11,8 +11,8 @@ import java.util.List;
 
 public class PaymentRepositoryTest extends AbstractLiquibaseUnitTest {
 
-    @Autowired
-    private ResourceRegistry resourceRegistry;
+//    @Autowired
+//    private ResourceRegistry resourceRegistry;
 
     private PaymentRepository paymentRepository = new PaymentRepository();
 

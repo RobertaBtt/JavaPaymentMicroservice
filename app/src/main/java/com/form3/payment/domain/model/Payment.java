@@ -10,14 +10,22 @@ import io.katharsis.resource.annotations.JsonApiResource;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+//@Entity
 @Getter
 @Setter
 @Type("Payment")
+//@Table(name = "payment")
 @JsonApiResource(type = "Payment")
 public class Payment {
 
     @Id
     @JsonApiId
+    //@javax.persistence.Id
+    //@Column(name = "id")
     private String id;
 
     private String version;
@@ -28,9 +36,6 @@ public class Payment {
 
     @Organisation
     private String organisation_id;
-
-    @JsonProperty("amount")
-    private String amount;
 
     @Relationship("BeneficiaryParty")
     private BeneficiaryParty beneficiary_party;
@@ -44,11 +49,20 @@ public class Payment {
     @Relationship("DebtorParty")
     private DebtorParty debtor_party;
 
+
+    @Relationship("SponsorParty")
+    private SponsorParty sponsor_party;
+
     @JsonProperty("end_to_end_reference")
     private String endToEndReference;
 
     @Relationship("fx")
     private Fx fx;
+
+
+    @JsonProperty("amount")
+    private String amount;
+
 
     @JsonProperty("numeric_reference")
     private String numericReference;
@@ -77,8 +91,6 @@ public class Payment {
     @JsonProperty("scheme_payment_type")
     private String schemePaymentType;
 
-    @Relationship("SponsorParty")
-    private SponsorParty sponsor_party;
 
 
     public Payment(String id) {
