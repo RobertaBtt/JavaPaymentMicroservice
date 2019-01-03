@@ -5,18 +5,26 @@ import com.form3.payment.domain.annotations.Organisation;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Relationship;
 import com.github.jasminb.jsonapi.annotations.Type;
+import io.katharsis.resource.annotations.JsonApiId;
+import io.katharsis.resource.annotations.JsonApiResource;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Type("Payment")
+@JsonApiResource(type = "Payment")
 public class Payment {
 
     @Id
+    @JsonApiId
     private String id;
 
     private String version;
+
+    public Payment() {
+        super();
+    }
 
     @Organisation
     private String organisation_id;
@@ -73,7 +81,7 @@ public class Payment {
     private SponsorParty sponsor_party;
 
 
-    public Payment() {
-        super();
+    public Payment(String id) {
+        this.id = id;
     }
 }

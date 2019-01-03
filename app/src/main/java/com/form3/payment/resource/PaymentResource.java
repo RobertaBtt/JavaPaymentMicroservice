@@ -23,6 +23,18 @@ public class PaymentResource {
 
     public static final String PATH = "/transactions/payments";
 
+
+    @RequestMapping("/resourcesInfo")
+    public Map<?, ?> getResources2() {
+        Map<String, String> result = new HashMap<>();
+        // Add all resources (i.e. Project and Task)
+        for (RegistryEntry entry : resourceRegistry.getResources()) {
+            result.put(entry.getResourceInformation().getResourceType(), resourceRegistry.getResourceUrl(entry.getResourceInformation()));
+        }
+        return result;
+    }
+
+
     @RequestMapping(PATH)
     public Map<String, String> getResources() {
         Map<String, String> result = new HashMap<>();

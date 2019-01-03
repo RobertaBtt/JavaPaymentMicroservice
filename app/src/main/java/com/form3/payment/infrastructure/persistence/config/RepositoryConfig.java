@@ -1,5 +1,6 @@
 package com.form3.payment.infrastructure.persistence.config;
 
+import com.form3.payment.infrastructure.persistence.PaymentRepository;
 import com.form3.payment.infrastructure.persistence.repository.BaseRepositoryImpl;
 import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener;
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
@@ -22,7 +23,8 @@ import java.util.Properties;
 
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model", "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = BaseRepositoryImpl.class)
+@EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model",
+        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepository.class)
 @EnableTransactionManagement
 public class RepositoryConfig {
 
@@ -34,19 +36,11 @@ public class RepositoryConfig {
 
 
     @Bean
-    //@ConfigurationProperties(prefix="spring.datasource")
     public DataSource dataSource() {
 
         logger.warn("datasource db.url: {} db.username: {}", env.getProperty(DatabaseProperties.URL), env.getProperty(DatabaseProperties.USERNAME));
 
         JdbcDataSource dataSource = new JdbcDataSource();
-//        dataSource.setDriverClassName(env.getProperty(DatabaseProperties.DRIVER));
-//        dataSource.setJdbcUrl(env.getProperty(DatabaseProperties.URL));
-//        dataSource.setUsername(env.getProperty(DatabaseProperties.USERNAME));
-//        dataSource.setPassword(env.getProperty(DatabaseProperties.PASSWORD));
-//        dataSource.setMaximumPoolSize(env.getProperty(DatabaseProperties.POOL_SIZE, Integer.class, 10));
-//        dataSource.setIdleTimeout(env.getProperty(DatabaseProperties.IDLE_TIMEOUT, Integer.class, 20000));
-//        dataSource.setMaxLifetime(env.getProperty(DatabaseProperties.MAX_LIFETIME, Integer.class, 30000));
 
         dataSource.setURL(env.getProperty(DatabaseProperties.URL));
         dataSource.setUser(env.getProperty(DatabaseProperties.USERNAME));

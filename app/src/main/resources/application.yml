@@ -15,9 +15,15 @@ hibernate:
   hbm2ddl.auto: none
   packagesToScan: com.form3.payment.domain.model
 
+
+katharsis:
+  resourcePackage: com.form3.payment.domain
+  domainName: http://localhost:8080
+  pathPrefix: /api
+
 server:
-    servlet-path: /system
-    port: 8080
+  context-path: /
+  port: 8080
 
 management:
     info:
