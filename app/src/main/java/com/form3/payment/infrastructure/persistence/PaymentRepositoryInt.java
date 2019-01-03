@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 public interface PaymentRepositoryInt
-        //extends BaseRepository<Payment, String>
+       // extends BaseRepository<Payment, String>
 {
 
 

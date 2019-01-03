@@ -1,9 +1,11 @@
 package com.form3.payment.infrastructure.data;
 
 import com.form3.payment.domain.model.Payment;
+import com.form3.payment.infrastructure.persistence.repository.BaseRepositoryImpl;
 import com.github.jasminb.jsonapi.JSONAPIDocument;
 import com.github.jasminb.jsonapi.ResourceConverter;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,6 +15,8 @@ import java.util.List;
 public class JSONPaymentsImporter {
 
 
+    @Inject
+    BaseRepositoryImpl repository;
     public List<Payment> loadDataFile(List<Payment> payments, String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();

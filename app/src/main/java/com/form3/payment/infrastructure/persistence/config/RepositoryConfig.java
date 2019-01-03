@@ -24,7 +24,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model",
-        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepository.class)
+        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = BaseRepositoryImpl.class)
 @EnableTransactionManagement
 public class RepositoryConfig {
 
