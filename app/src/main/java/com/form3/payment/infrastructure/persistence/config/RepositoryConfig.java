@@ -24,7 +24,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model",
-        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = BaseRepositoryImpl.class)
+        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepository.class)
 @EnableTransactionManagement
 public class RepositoryConfig {
 
@@ -53,54 +53,54 @@ public class RepositoryConfig {
                 .countQuery()
                 .build();
     }
-
-    /**
-     * Declare the JPA entity manager factory.
-     */
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactory =
-                new LocalContainerEntityManagerFactoryBean();
-
-        entityManagerFactory.setDataSource(dataSource());
-        entityManagerFactory.setPackagesToScan(env.getProperty(HibernateProperties.PACKAGES_TO_SCAN));
-        entityManagerFactory.setJpaProperties(hibernateProperties());
-
-        // Vendor adapter
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
-
-        return entityManagerFactory;
-    }
-
-    private Properties hibernateProperties() {
-        Properties additionalProperties = new Properties();
-        additionalProperties.put(HibernateProperties.DIALECT, env.getProperty(HibernateProperties.DIALECT));
-        additionalProperties.put(HibernateProperties.SHOW_SQL, env.getProperty(HibernateProperties.SHOW_SQL));
-        additionalProperties.put(HibernateProperties.HBM2DDL_AUTO, env.getProperty(HibernateProperties.HBM2DDL_AUTO));
-        return additionalProperties;
-    }
-
-    /**
-     * Declare the transaction manager.
-     */
-    @Bean
-    public JpaTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-        return transactionManager;
-    }
-
-    /**
-     * PersistenceExceptionTranslationPostProcessor is a bean post processor
-     * which adds an advisor to any bean annotated with Repository so that any
-     * platform-specific exceptions are caught and then rethrown as one
-     * Spring's unchecked data access exceptions (i.e. a subclass of
-     * DataAccessException).
-     */
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
+//
+//    /**
+//     * Declare the JPA entity manager factory.
+//     */
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+//        LocalContainerEntityManagerFactoryBean entityManagerFactory =
+//                new LocalContainerEntityManagerFactoryBean();
+//
+//        entityManagerFactory.setDataSource(dataSource());
+//        entityManagerFactory.setPackagesToScan(env.getProperty(HibernateProperties.PACKAGES_TO_SCAN));
+//        entityManagerFactory.setJpaProperties(hibernateProperties());
+//
+//        // Vendor adapter
+//        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+//        entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
+//
+//        return entityManagerFactory;
+//    }
+//
+//    private Properties hibernateProperties() {
+//        Properties additionalProperties = new Properties();
+//        additionalProperties.put(HibernateProperties.DIALECT, env.getProperty(HibernateProperties.DIALECT));
+//        additionalProperties.put(HibernateProperties.SHOW_SQL, env.getProperty(HibernateProperties.SHOW_SQL));
+//        additionalProperties.put(HibernateProperties.HBM2DDL_AUTO, env.getProperty(HibernateProperties.HBM2DDL_AUTO));
+//        return additionalProperties;
+//    }
+//
+//    /**
+//     * Declare the transaction manager.
+//     */
+//    @Bean
+//    public JpaTransactionManager transactionManager() {
+//        JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+//        return transactionManager;
+//    }
+//
+//    /**
+//     * PersistenceExceptionTranslationPostProcessor is a bean post processor
+//     * which adds an advisor to any bean annotated with Repository so that any
+//     * platform-specific exceptions are caught and then rethrown as one
+//     * Spring's unchecked data access exceptions (i.e. a subclass of
+//     * DataAccessException).
+//     */
+//    @Bean
+//    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+//        return new PersistenceExceptionTranslationPostProcessor();
+//    }
 
 }

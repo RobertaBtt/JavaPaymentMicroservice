@@ -25,12 +25,6 @@ server:
   context-path: /
   port: 8080
 
-management:
-    info:
-      git:
-        mode: full
-    security:
-        enabled: false
 
 
 form3:

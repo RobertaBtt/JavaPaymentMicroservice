@@ -4,6 +4,7 @@ import com.form3.payment.domain.model.Payment;
 import com.form3.payment.infrastructure.data.config.JSONPaymentsConfig;
 import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryBase;
+import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 import org.springframework.stereotype.Component;
 
@@ -54,3 +55,43 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
         return resource;
     }
 }
+
+
+//    @Override
+//    public Class<Payment> getResourceClass() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Payment findOne(String s, QuerySpec querySpec) {
+//         //return querySpec.apply(payments.values());;
+//        return new Payment();
+//    }
+//
+//    @Override
+//    public synchronized ResourceList<Payment> findAll(QuerySpec querySpec) {
+//        return querySpec.apply(payments.values());
+//    }
+//
+//    @Override
+//    public ResourceList<Payment> findAll(Iterable<String> iterable, QuerySpec querySpec) {
+//        return querySpec.apply(payments.values());
+//    }
+//
+//    @Override
+//    public <S extends Payment> S create(S resource) {
+//        payments.put(resource.getId(), resource);
+//        return resource;
+//    }
+//
+//    @Override
+//    public void delete(String id) {
+//        payments.remove(id);
+//    }
+//
+//    @Override
+//    public <S extends Payment> S save(S resource) {
+//        payments.put(resource.getId(), resource);
+//        return resource;
+//    }
+//}

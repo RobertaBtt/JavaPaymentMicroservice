@@ -15,11 +15,7 @@ public class PaymentRepositoryIntTest extends AbstractLiquibaseUnitTest {
 
 //    @Autowired
 //    private ResourceRegistry resourceRegistry;
-
-    @Inject
-    private PaymentRepositoryInt paymentRepository;
-
-    @Test
+   @Test
     public void payments_not_created() {
 //
 //        List<Payment> payments = paymentRepository.findAll();
