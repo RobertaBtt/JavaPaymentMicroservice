@@ -15,18 +15,18 @@ import java.util.Map;
 @Import({KatharsisConfigV3.class})
 public class KatharsisController {
 
-  @Autowired
-  private ResourceRegistry resourceRegistry;
+    @Autowired
+    private ResourceRegistry resourceRegistry;
 
-  @RequestMapping("/resources-info")
-  public Map<String, String> getResources() {
-    Map<String, String> result = new HashMap<>();
-    // Add all resources
-    for (RegistryEntry entry : resourceRegistry.getResources()) {
-      result.put(entry.getResourceInformation().getResourceType(),
-          resourceRegistry.getResourceUrl(entry.getResourceInformation()));
+    @RequestMapping("/resources-info")
+    public Map<String, String> getResources() {
+        Map<String, String> result = new HashMap<>();
+        // Add all resources
+        for (RegistryEntry entry : resourceRegistry.getResources()) {
+            result.put(entry.getResourceInformation().getResourceType(),
+                    resourceRegistry.getResourceUrl(entry.getResourceInformation()));
+        }
+
+        return result;
     }
-
-    return result;
-  }
 }

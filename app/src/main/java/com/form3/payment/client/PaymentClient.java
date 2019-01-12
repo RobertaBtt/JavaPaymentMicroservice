@@ -6,8 +6,6 @@ import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.registry.ResourceRegistry;
 import io.katharsis.spring.boot.v3.KatharsisConfigV3;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Import;
@@ -20,7 +18,7 @@ import java.io.Serializable;
 @Import({KatharsisConfigV3.class})
 public class PaymentClient {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentClient.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentClient.class);
 
     @Autowired
     private ResourceRegistry resourceRegistry;
@@ -43,6 +41,8 @@ public class PaymentClient {
     }
 
     public Payment findOne(String id) {
+        System.out.println("ROBY    **************************");
+//        LOGGER.debug("Find One in Payment Client");
         Payment result = resourceRepositoryV2.findOne(id, new QuerySpec(Payment.class));
 
         return result;

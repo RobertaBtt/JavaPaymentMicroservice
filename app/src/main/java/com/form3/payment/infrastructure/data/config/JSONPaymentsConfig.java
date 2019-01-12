@@ -22,7 +22,7 @@ public class JSONPaymentsConfig {
         List<Payment> payments = new ArrayList<Payment>();
         JSONPaymentsImporter jsonPaymentsImporter = new JSONPaymentsImporter();
 
-        if(dataFolder == null)
+        if (dataFolder == null)
             dataFolder = "data/";
         jsonPaymentsImporter.loadDataFile(payments, dataFolder);
 

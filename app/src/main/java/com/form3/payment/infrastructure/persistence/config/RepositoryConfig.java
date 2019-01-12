@@ -1,7 +1,6 @@
 package com.form3.payment.infrastructure.persistence.config;
 
-import com.form3.payment.infrastructure.persistence.PaymentRepository;
-import com.form3.payment.infrastructure.persistence.repository.BaseRepositoryImpl;
+import com.form3.payment.domain.model.repository.PaymentRepositoryImpl;
 import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener;
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 import org.h2.jdbcx.JdbcDataSource;
@@ -11,20 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model",
-        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepository.class)
+        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepositoryImpl.class)
 @EnableTransactionManagement
 public class RepositoryConfig {
 

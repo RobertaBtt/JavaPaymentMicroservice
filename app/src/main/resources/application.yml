@@ -39,6 +39,8 @@ spring:
   liquibase:
     change-log: liquibase/db.changelog-master.xml
     changeLog: liquibase/db.changelog-master.xml
+    application:
+      name: payment
 
 ---
 

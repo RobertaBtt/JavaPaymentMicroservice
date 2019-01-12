@@ -17,6 +17,7 @@ public class JSONPaymentsImporter {
 
     @Inject
     BaseRepositoryImpl repository;
+
     public List<Payment> loadDataFile(List<Payment> payments, String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();

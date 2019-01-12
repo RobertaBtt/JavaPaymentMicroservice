@@ -4,11 +4,9 @@ import com.form3.payment.domain.model.Payment;
 import com.form3.payment.infrastructure.data.config.JSONPaymentsConfig;
 import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryBase;
-import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 import org.springframework.stereotype.Component;
 
-import javax.inject.Singleton;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +32,11 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
         }
     }
 
+
     @Override
     public synchronized ResourceList<Payment> findAll(QuerySpec querySpec) {
+        System.out.println("+++++++++++++++++++++++++++++++++++++");
+
         return querySpec.apply(payments.values());
     }
 
@@ -62,11 +63,7 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
 //        return null;
 //    }
 //
-//    @Override
-//    public Payment findOne(String s, QuerySpec querySpec) {
-//         //return querySpec.apply(payments.values());;
-//        return new Payment();
-//    }
+
 //
 //    @Override
 //    public synchronized ResourceList<Payment> findAll(QuerySpec querySpec) {
