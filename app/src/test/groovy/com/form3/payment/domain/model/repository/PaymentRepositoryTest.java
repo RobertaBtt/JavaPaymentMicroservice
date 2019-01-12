@@ -1,4 +1,4 @@
-package com.form3.payment.infrastructure.persistence;
+package com.form3.payment.domain.model.repository;
 
 import com.form3.payment.domain.model.Payment;
 import com.form3.payment.domain.model.repository.PaymentRepositoryImpl;

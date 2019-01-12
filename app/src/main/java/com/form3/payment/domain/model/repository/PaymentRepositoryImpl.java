@@ -35,8 +35,6 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
 
     @Override
     public synchronized ResourceList<Payment> findAll(QuerySpec querySpec) {
-        System.out.println("+++++++++++++++++++++++++++++++++++++");
-
         return querySpec.apply(payments.values());
     }
 
