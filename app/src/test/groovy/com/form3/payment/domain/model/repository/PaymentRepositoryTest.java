@@ -20,13 +20,14 @@ public class PaymentRepositoryTest extends AbstractLiquibaseUnitTest {
 
     private PaymentRepositoryImpl paymentRepository = new PaymentRepositoryImpl();
 
-    private List<Payment> payments ; //= paymentRepository.findAll(new QuerySpec(Payment.class));
+    private List<Payment> payments; //= paymentRepository.findAll(new QuerySpec(Payment.class));
 
     @Before
-    public void setPaymentList(){
+    public void setPaymentList() {
         payments = paymentRepository.findAll(new QuerySpec(Payment.class));
 
     }
+
     @Test
     public void payments_loaded_test() {
         assert payments.size() == 2;
