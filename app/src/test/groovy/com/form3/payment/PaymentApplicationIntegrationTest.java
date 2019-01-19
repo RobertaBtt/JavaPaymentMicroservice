@@ -35,15 +35,25 @@ public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
                 .header("Content-Type", "application/vnd.api+json;charset=UTF-8");
 
 
-        ArrayList<HashMap<String, String>> data = response.jsonPath().get("data");
-        HashMap<String, String> firstPayment = data.get(0);
+        ArrayList<HashMap<String, String>> dataHashMap = response.jsonPath().get("data");
 
+        //There are 2 payments
+        assert dataHashMap.size() == 2;
+        HashMap<String, String> firstPayment = dataHashMap.get(0);
 
+        //Payment has 4 main elements:
         assert firstPayment.size() == 4;
-        //assert firstPayment.get("attributes").size() == 19;
+        assert firstPayment.get("type").equals("Payment");
+        assert firstPayment.get("id").equals("216d4da9-e59a-4cc6-8df3-3da6e7580b77");
 
-//        String sresponse = get(urlEqualTo("http://localhost:8080/api/Payment")).build()
-//                .getResponse().getBody();
+        Object attributes = firstPayment.get("attributes");
+        Object debtorParty = ((HashMap<String, Object>)attributes).get("debtor_party");
+        Object bankIdCode = ((HashMap) debtorParty).get("bank_id_code");
+        Object accountNumber = ((HashMap) debtorParty).get("account_number");
 
+        assert bankIdCode.equals("GBDSC");
+        assert accountNumber.equals("GB29XABC10161234567801");
+
+        attributes.equals(attributes);
     }
 }
