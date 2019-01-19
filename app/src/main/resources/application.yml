@@ -48,4 +48,5 @@ spring:
 spring:
   profiles: local
 
-server.port: 8084
+#This port is used in the profile local to run tests
+server.port: 8080

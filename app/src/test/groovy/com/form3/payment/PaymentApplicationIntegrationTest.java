@@ -4,8 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -13,13 +13,14 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PaymentApplicationIntegrationTest {
+@Category(IntegrationTest.class)
+public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
+
 
     @Test
     public void test_get() {
+
 
         RestAssured.baseURI = RestAssured.baseURI.concat(":8080/api/Payment");
         RequestSpecification request = RestAssured.given();

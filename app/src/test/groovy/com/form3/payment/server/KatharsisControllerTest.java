@@ -23,18 +23,15 @@ public class KatharsisControllerTest {
 
 
     @Test
-    public void test_get_mock() {
+    public void test_get_all_mock() {
 
         stubFor(get(urlEqualTo("http://localhost:8081/api/Payment"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "application/vnd.api+json;charset=UTF-8")
                         .withStatus(200)
+
                 ));
-
-
-        RestAssured.baseURI = RestAssured.baseURI.concat(":8080/api/Payment");
-        RequestSpecification request = RestAssured.given();
-
+        
     }
 
 

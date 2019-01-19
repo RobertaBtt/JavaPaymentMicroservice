@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @Configuration
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(initializers = ConfigFileApplicationContextInitializer.class)
 public abstract class AbstractIntegrationTest {
 
