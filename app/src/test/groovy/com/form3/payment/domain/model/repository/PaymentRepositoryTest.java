@@ -12,13 +12,13 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class PaymentRepositoryTest extends AbstractLiquibaseUnitTest {
+public class PaymentRepoHashMapTest extends AbstractLiquibaseUnitTest {
 
 
     private static String paymentId = "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43";
     private static String newPaymentId = "00000000-0000-0000-0000-dd5b6165ec43";
 
-    private PaymentRepositoryImpl paymentRepository = new PaymentRepositoryImpl();
+    private PaymentRepoHashMap paymentRepository = new PaymentRepoHashMap();
 
     private List<Payment> payments; //= paymentRepository.findAll(new QuerySpec(Payment.class));
 

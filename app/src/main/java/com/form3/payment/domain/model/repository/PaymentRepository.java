@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, String> {
+public class PaymentRepoHashMap extends ResourceRepositoryBase<Payment, String> {
 
 
     JSONPaymentsConfig jsonPaymentsConfig = new JSONPaymentsConfig();
@@ -21,13 +21,13 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
 
     private List<Payment> paymentList;
 
-    public PaymentRepositoryImpl() {
+    public PaymentRepoHashMap() {
 
         super(Payment.class);
 
         paymentList = jsonPaymentsConfig.getPaymentsFromFile();
-        for (Payment payemnt : paymentList) {
-            payments.put(payemnt.getId(), payemnt);
+        for (Payment payment : paymentList) {
+            payments.put(payment.getId(), payment);
 
         }
     }
@@ -40,6 +40,7 @@ public class PaymentRepositoryImpl extends ResourceRepositoryBase<Payment, Strin
 
     @Override
     public <S extends Payment> S create(S resource) {
+
         return this.save(resource);
     }
 
