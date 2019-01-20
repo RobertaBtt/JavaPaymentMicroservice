@@ -112,11 +112,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
-            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -438,35 +434,6 @@
                 </reportSets>
             </plugin>
 
-
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-failsafe-plugin</artifactId>-->
-                <!--<version>${maven-failsafe-plugin.version}</version>-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.gotouche</groupId>-->
-                        <!--<artifactId>ms_commons-test</artifactId>-->
-                        <!--<version>${ms_commons.version}</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-                <!--<configuration>-->
-                    <!--<testSourceDirectory>src/test/groovy</testSourceDirectory>-->
-                    <!--<includes>-->
-                        <!--<include>**/*IT.java</include>-->
-                        <!--<include>**/*IntegrationTest.java</include>-->
-                    <!--</includes>-->
-                    <!--<groups>com.gotouche.common.test.IntegrationTest</groups>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>integration-test</goal>-->
-                            <!--<goal>verify</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
 
 
         </plugins>

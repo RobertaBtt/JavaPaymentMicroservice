@@ -21,16 +21,16 @@ import static io.restassured.RestAssured.given;
 public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
 
     private String type = "Payment";
-    private int numberOfPayments = 2;
+    private int numberOfPayments = 14;
     private int firstLevelAttributes = 4;
 
-    String paymentId = "216d4da9-e59a-4cc6-8df3-3da6e7580b77";
+    String paymentId = "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43";
     String bankIdCodeValue = "GBDSC";
     String accountNumberValue = "GB29XABC10161234567801";
 
-    private String bankIdValue = "854445";
-    private String accountNameValue = "Jack Black 0909";
-    private String nameValue = "Emily Bronte" ;
+    private String bankIdValue = "403000";
+    private String accountNameValue = "Wilfred Jeremiah Owens";
+    private String nameValue = "Emily Bronte";
     String paymentIdToAdd = "00001";
 
 
@@ -56,11 +56,11 @@ public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
     }
 
 
-    private void checkFirstPayment(Response response){
+    private void checkFirstPayment(Response response) {
 
 
         ArrayList<HashMap<String, String>> dataHashMap = response.jsonPath().get("data");
-        HashMap<String, String> firstPayment = dataHashMap.get(0);
+        HashMap<String, String> firstPayment = dataHashMap.get(1);
 
         assert dataHashMap.size() == numberOfPayments;
         assert firstPayment.size() == firstLevelAttributes;
@@ -87,12 +87,12 @@ public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
         try {
             jsonObjRequestPost = new JSONObject("{\n" +
                     "    \"data\": {\n" +
-                    "        \"id\": \"" + paymentIdToAdd +"\",\n" +
+                    "        \"id\": \"" + paymentIdToAdd + "\",\n" +
                     "        \"type\": \"Payment\",\n" +
                     "        \"attributes\": {\n" +
                     "            \"debtor_party\": {\n" +
                     "                \"id\": null,\n" +
-                    "                \"account_name\": \"" + accountNameValue +"\",\n" +
+                    "                \"account_name\": \"" + accountNameValue + "\",\n" +
                     "                \"account_number\": \"123123123\",\n" +
                     "                \"account_number_code\": \"IBAN\",\n" +
                     "                \"address\": \"1234 Street, NY\",\n" +
@@ -131,14 +131,13 @@ public class PaymentApplicationIntegrationTest extends AbstractIntegrationTest {
     }
 
 
-
-    private void checkAddedPayment(Response responseGetAll, Response responseGetOne){
+    private void checkAddedPayment(Response responseGetAll, Response responseGetOne) {
 
         ArrayList<HashMap<String, String>> dataHashMap = responseGetAll.jsonPath().get("data");
-        HashMap<String, String> thirdPayment = dataHashMap.get(2); //The added element is the last
+        HashMap<String, String> thirdPayment = dataHashMap.get(5); //The added element is the last
 
-        assert dataHashMap.size() == numberOfPayments +1;
-        assert thirdPayment.size() == firstLevelAttributes ;
+        assert dataHashMap.size() == numberOfPayments + 1;
+        assert thirdPayment.size() == firstLevelAttributes;
         assert thirdPayment.get("type").equals(type);
         assert thirdPayment.get("id").equals(paymentIdToAdd);
 

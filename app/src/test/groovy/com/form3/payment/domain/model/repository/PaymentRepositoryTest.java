@@ -12,13 +12,13 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class PaymentRepoHashMapTest extends AbstractLiquibaseUnitTest {
+public class PaymentRepositoryTest extends AbstractLiquibaseUnitTest {
 
 
     private static String paymentId = "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43";
     private static String newPaymentId = "00000000-0000-0000-0000-dd5b6165ec43";
 
-    private PaymentRepoHashMap paymentRepository = new PaymentRepoHashMap();
+    private PaymentRepository paymentRepository = new PaymentRepository();
 
     private List<Payment> payments; //= paymentRepository.findAll(new QuerySpec(Payment.class));
 
@@ -30,7 +30,7 @@ public class PaymentRepoHashMapTest extends AbstractLiquibaseUnitTest {
 
     @Test
     public void payments_loaded_test() {
-        assert payments.size() == 2;
+        assert payments.size() == 14;
     }
 
     @Test
@@ -48,7 +48,7 @@ public class PaymentRepoHashMapTest extends AbstractLiquibaseUnitTest {
     public void payments_create_one_test() {
 
         //List<Payment> paymentsLocal = payments;
-        assert payments.size() == 2;
+        assert payments.size() == 14;
 
         Payment payment = new Payment(newPaymentId);
         payment.setAmount("99.99");
@@ -62,28 +62,23 @@ public class PaymentRepoHashMapTest extends AbstractLiquibaseUnitTest {
         assert retrievedPayment.get(0).getId().equalsIgnoreCase(newPaymentId);
         assert retrievedPayment.get(0).getAmount().equals("99.99");
 
-        //payments = paymentsLocal;
     }
 
 
     @Test
     public void payments_remove_one_test() {
 
-//        List<Payment> payments = paymentRepository.findAll(new QuerySpec(Payment.class));
-//        assert payments.size() == 2;
 
         paymentRepository.delete(paymentId);
 
         payments = paymentRepository.findAll(new QuerySpec(Payment.class));
-        assert payments.size() == 1;
+        assert payments.size() == 13;
 
     }
 
 
     @Test
     public void payments_modify_one_test() {
-
-        //List<Payment> payments = paymentRepository.findAll(new QuerySpec(Payment.class));
 
         //id 4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43
         Payment retrievedPayment = payments.get(0);

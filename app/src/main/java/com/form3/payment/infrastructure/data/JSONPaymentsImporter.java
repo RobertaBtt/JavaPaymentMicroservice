@@ -15,7 +15,7 @@ public class JSONPaymentsImporter {
     public List<Payment> loadDataFile(List<Payment> payments, String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(fileName).getFile());
+        File file = new File(fileName);
         byte[] fileContent;
         ResourceConverter converter = new ResourceConverter(Payment.class);
 
