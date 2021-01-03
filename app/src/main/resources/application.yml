@@ -15,16 +15,16 @@ hibernate:
   hbm2ddl.auto: none
   packagesToScan: com.form3.payment.domain.model
 
-server:
-    servlet-path: /system
-    port: 8080
 
-management:
-    info:
-      git:
-        mode: full
-    security:
-        enabled: false
+katharsis:
+  resourcePackage: com.form3.payment.domain
+  domainName: http://localhost:8080
+  pathPrefix: /api
+
+server:
+  context-path: /
+  port: 8080
+
 
 
 form3:
@@ -39,6 +39,8 @@ spring:
   liquibase:
     change-log: liquibase/db.changelog-master.xml
     changeLog: liquibase/db.changelog-master.xml
+    application:
+      name: payment
 
 ---
 
@@ -46,4 +48,5 @@ spring:
 spring:
   profiles: local
 
-server.port: 8084
+#This port is used in the profile local to run tests
+server.port: 8080

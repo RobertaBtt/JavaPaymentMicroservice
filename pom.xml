@@ -30,9 +30,9 @@
         <gmavenplus-plugin.version>1.5</gmavenplus-plugin.version>
         <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
 
-        <spring-boot-maven-plugin.version>1.3.5.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>1.3.6.RELEASE</spring-boot-maven-plugin.version>
         <spring.platform.version>Brussels-SR5</spring.platform.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <spring-cloud.version>2.0.2.RELEASE</spring-cloud.version>
         <spring-boot-starter-test.version>1.5.2.RELEASE</spring-boot-starter-test.version>
         <spring-boot-starter.version>1.5.2.RELEASE</spring-boot-starter.version>
         <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
@@ -44,9 +44,8 @@
         <okhttp.version>3.6.0</okhttp.version>
         <jsonapi-converter.version>0.9</jsonapi-converter.version>
 
+        <jackson.version>2.12.0</jackson.version>
 
-
-        <jackson.version>2.9.5</jackson.version>
         <jersey-jackson.version>2.25</jersey-jackson.version>
         <swagger.version>1.5.10</swagger.version>
 
@@ -73,24 +72,18 @@
         <datasource-proxy.version>1.4.4</datasource-proxy.version>
         <hikaricp.version>2.7.6</hikaricp.version>
 
-        <ms_commons.version>1.2.0-SNAPSHOT</ms_commons.version>
-
         <resourceDir>src/main/config</resourceDir>
     </properties>
 
     <profiles>
         <profile>
-            <id>prod</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
-            </dependencies>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile>local</profile>
+            </properties>
         </profile>
     </profiles>
 
@@ -108,42 +101,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
-                <version>${maven-compiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+            </plugin>
 
-
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>${git-commit-id-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -153,6 +122,33 @@
                         <goals>
                             <goal>addTestSources</goal>
                             <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Test*.java</include>
+                    </includes>
+                    <groups>com.form3.payment.IntegrationTest</groups>
+
+                </configuration>
+
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -189,17 +185,20 @@
             </dependency>
 
 
-
             <!-- end Spring boot -->
 
             <!-- spring cloud -->
+
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-contract-wiremock -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <artifactId>spring-cloud-contract-wiremock</artifactId>
+                <version>1.0.3.RELEASE</version>
+                <scope>test</scope>
             </dependency>
+
+
             <!-- end spring cloud -->
 
             <!-- katharsis -->
@@ -315,11 +314,6 @@
                 <version>${datasource-proxy.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.zaxxer</groupId>
-                <artifactId>HikariCP</artifactId>
-                <version>${hikaricp.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -410,14 +404,11 @@
             </dependency>
 
 
-
             <dependency>
                 <groupId>com.form3</groupId>
                 <artifactId>ms_payment-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-            <!-- end Touche artifacts -->
 
         </dependencies>
 
@@ -442,6 +433,9 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+
+
+
         </plugins>
     </reporting>
 

@@ -20,7 +20,6 @@
         <springfox.version>2.6.1</springfox.version>
         <swagger.version>1.5.10</swagger.version>
         <version>${springfox.version}</version>
-        <spring-cloud-starter-kubernetes.version>0.1.6</spring-cloud-starter-kubernetes.version>
         <fabric8.maven.plugin.version>3.2.28</fabric8.maven.plugin.version>
     </properties>
 
@@ -35,39 +34,20 @@
                 </configuration>
                 <version>${maven-compiler-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>get-the-git-infos</id>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- this is false by default, forces the plugin to generate the git.properties file -->
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
 
-                    <!-- The path for the properties file to be generated. See Super Pom for default variable reference https://maven.apache.org/guides/introduction/introduction-to-the-pom.html -->
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
-                    </generateGitPropertiesFilename>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-maven-plugin.version}</version>
-                <configuration>
-                    <requiresUnpack>
-                        <dependency>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                        </dependency>
-                    </requiresUnpack>
-                    <mainClass>com.form3.PaymentApplication</mainClass>
-                </configuration>
+                <!--<configuration>-->
+                    <!--<requiresUnpack>-->
+                        <!--<dependency>-->
+                            <!--<groupId>${project.groupId}</groupId>-->
+                            <!--<artifactId>${project.artifactId}</artifactId>-->
+                        <!--</dependency>-->
+                    <!--</requiresUnpack>-->
+                    <!--<mainClass>com.form3.PaymentApplication</mainClass>-->
+                <!--</configuration>-->
                 <executions>
                     <execution>
                         <goals>
@@ -108,6 +88,8 @@
             </exclusions>
         </dependency>
 
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -139,10 +121,6 @@
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -179,6 +157,14 @@
             <artifactId>jsonapi-converter</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-contract-wiremock -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -195,16 +181,8 @@
             <artifactId>datasource-proxy</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>io.fabric8</groupId>
-            <artifactId>spring-cloud-starter-kubernetes</artifactId>
-            <version>${spring-cloud-starter-kubernetes.version}</version>
-        </dependency>
+
 
         <!-- swagger -->
         <dependency>
@@ -283,6 +261,13 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
 
 
         <!--end test dependencies-->

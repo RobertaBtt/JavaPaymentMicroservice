@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: payment
-
-feign:
-    hystrix:
-        enabled: true

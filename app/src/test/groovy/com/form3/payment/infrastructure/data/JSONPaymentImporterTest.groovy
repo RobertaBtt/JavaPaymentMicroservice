@@ -13,22 +13,20 @@ class JSONPaymentImporterTest {
     @Test
     public void paymentsNumberTest() {
 
-        this.getClass().getResource('/application.properties').withInputStream {
-            properties.load(it)
-        }
+        JSONPaymentsImporter jsonPaymentsImporter = new JSONPaymentsImporter();
+
+        String currentDir = System.getProperty("user.dir");
+        String folderDataTest = currentDir + "/data/"
+
 
         JSONPaymentsImporter importer = new JSONPaymentsImporter();
 
-        String folder = properties."json.folder";
+        importer.loadDataFile(payments, folderDataTest);
 
-        importer.loadDataFile(payments, folder);
-
-        assert payments.size() == 2
-//        assert payments.first().type == "Payment"
-//        assert payments.first().version == "0";
+        assert payments.size() == 14
         assert payments.first().amount == "100.21"
         assert payments.first().beneficiary_party.accountName == "W Owens"
- //       assert payments.last().organisation_id.organisation_id == "743d5b63-8e6f-432e-a8fa-c5d8d2ee5fcb";
+        
     }
 
 

@@ -12,11 +12,10 @@ import java.util.List;
 
 public class JSONPaymentsImporter {
 
-
     public List<Payment> loadDataFile(List<Payment> payments, String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(fileName).getFile());
+        File file = new File(fileName);
         byte[] fileContent;
         ResourceConverter converter = new ResourceConverter(Payment.class);
 
@@ -50,12 +49,5 @@ public class JSONPaymentsImporter {
         return payments;
     }
 
-    private List<Payment> convertOnePayment(ResourceConverter converter, byte[] fileContent, List<Payment> payments) {
 
-        // To convert raw data into single POJO
-        JSONAPIDocument<Payment> paymentJSONSingle = converter.readDocument(fileContent, Payment.class);
-        Payment payment = paymentJSONSingle.get();
-        payments.add(payment);
-        return payments;
-    }
 }
