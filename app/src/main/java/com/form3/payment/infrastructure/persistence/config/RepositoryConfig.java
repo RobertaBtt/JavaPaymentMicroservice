@@ -1,6 +1,6 @@
 package com.form3.payment.infrastructure.persistence.config;
 
-import com.form3.payment.domain.model.repository.PaymentRepositoryImpl;
+import com.form3.payment.domain.model.repository.PaymentRepository;
 import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener;
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 import org.h2.jdbcx.JdbcDataSource;
@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.form3.payment.domain.model",
-        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepositoryImpl.class)
+        "com.form3.payment.infrastructure.persistence"}, repositoryBaseClass = PaymentRepository.class)
 @EnableTransactionManagement
 public class RepositoryConfig {
 

@@ -32,7 +32,7 @@
 
         <spring-boot-maven-plugin.version>1.3.6.RELEASE</spring-boot-maven-plugin.version>
         <spring.platform.version>Brussels-SR5</spring.platform.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <spring-cloud.version>2.0.2.RELEASE</spring-cloud.version>
         <spring-boot-starter-test.version>1.5.2.RELEASE</spring-boot-starter-test.version>
         <spring-boot-starter.version>1.5.2.RELEASE</spring-boot-starter.version>
         <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
@@ -44,9 +44,8 @@
         <okhttp.version>3.6.0</okhttp.version>
         <jsonapi-converter.version>0.9</jsonapi-converter.version>
 
-
-
         <jackson.version>2.12.0</jackson.version>
+
         <jersey-jackson.version>2.25</jersey-jackson.version>
         <swagger.version>1.5.10</swagger.version>
 
@@ -73,8 +72,6 @@
         <datasource-proxy.version>1.4.4</datasource-proxy.version>
         <hikaricp.version>2.7.6</hikaricp.version>
 
-        <ms_commons.version>1.2.0-SNAPSHOT</ms_commons.version>
-
         <resourceDir>src/main/config</resourceDir>
     </properties>
 
@@ -85,7 +82,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <buildRefName>local</buildRefName>
+                <profile>local</profile>
             </properties>
         </profile>
     </profiles>
@@ -115,11 +112,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
-            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -137,6 +130,28 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Test*.java</include>
+                    </includes>
+                    <groups>com.form3.payment.IntegrationTest</groups>
+
+                </configuration>
+
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -170,17 +185,20 @@
             </dependency>
 
 
-
             <!-- end Spring boot -->
 
             <!-- spring cloud -->
+
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-contract-wiremock -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <artifactId>spring-cloud-contract-wiremock</artifactId>
+                <version>1.0.3.RELEASE</version>
+                <scope>test</scope>
             </dependency>
+
+
             <!-- end spring cloud -->
 
             <!-- katharsis -->
@@ -297,7 +315,6 @@
             </dependency>
 
 
-
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
@@ -387,7 +404,6 @@
             </dependency>
 
 
-
             <dependency>
                 <groupId>com.form3</groupId>
                 <artifactId>ms_payment-app</artifactId>
@@ -417,6 +433,9 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+
+
+
         </plugins>
     </reporting>
 

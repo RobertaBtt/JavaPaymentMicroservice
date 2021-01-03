@@ -1,4 +1,4 @@
-package com.form3.payment;
+package com.form3.payment.client;
 
 import com.form3.payment.infrastructure.AbstractLiquibaseUnitTest;
 import com.form3.payment.infrastructure.persistence.config.RepositoryConfig;
@@ -14,15 +14,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 //@Transactional
 ////@DatabaseSetup({"classpath:payments-setup.xml"})
 @EnableAutoConfiguration
-public class PaymentApplicationTest extends AbstractLiquibaseUnitTest {
+public class PaymentClientTest extends AbstractLiquibaseUnitTest {
 
     private String paymentId = "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43";
 
 
     @Test
     public void testFindOne() {
-
-        System.out.println("______________________________________________________");
 
 //        Payment payment = paymentClient.findOne(paymentId);
 //
