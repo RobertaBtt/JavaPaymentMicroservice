@@ -5,7 +5,7 @@ Java Microservice, JSON API Specification, resources are the payments. REST para
 API design for payments.
 A list of payments might look like
 
-http://mockbin.org/bin/41ca3269-d8c4-4063-9fd5-f306814ff03f.
+http://mockbin.org/bin/41ca3269-d8c4-4063-9fd5-f306814ff03f
 
 Design requirements:
 • API should be RESTFUL
