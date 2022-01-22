@@ -67,7 +67,7 @@
         <dbunit.version>2.5.3</dbunit.version>
 
         <!--Data management -->
-        <h2.version>1.4.197</h2.version>
+        <h2.version>2.1.210</h2.version>
         <postgresql.version>42.2.1</postgresql.version>
         <datasource-proxy.version>1.4.4</datasource-proxy.version>
         <hikaricp.version>2.7.6</hikaricp.version>
