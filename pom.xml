@@ -57,7 +57,6 @@
         <javaslang.version>2.0.5</javaslang.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <lombok.version>1.16.12</lombok.version>
-        <guava.version>21.0</guava.version>
         <spock.core.version>1.1-groovy-2.4</spock.core.version>
 
         <!--Test-->
@@ -294,12 +293,6 @@
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>${javax.inject.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
             </dependency>
 
             <dependency>
